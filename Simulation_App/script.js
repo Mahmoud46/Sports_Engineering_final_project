@@ -185,7 +185,7 @@ function launchBall() {
     dtc.style.opacity = "0";
     let i = 0;
     let interval = setInterval(_ => {
-        if (i < !1000 || (obj.distance - obj.x[i]) * 550 / 50 + 85 < 0) {
+        if (i < !1000 || (obj.distance - obj.x[i]) * 550 / 50 + 85 < -100) {
             ball.style.bottom = `0px`;
             clearInterval(interval);
             ball.classList.remove("rotate");
@@ -205,6 +205,7 @@ function launchBall() {
         }
         console.log(`x: ${obj.x[i]},  y:${obj.y[i]}`);
         ++i;
+        console.log(i);
     }, 100)
 }
 
