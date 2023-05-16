@@ -137,7 +137,7 @@ function updateInitialDistance() {
     rangeDistance.style.backgroundSize = (val - min) * 100 / (max - min) + '% 100%';
     inputRangeValueType.style.left = (val - min) * 100 / (max - min) + '%';
     inputRangeValueType.innerText = obj.distance;
-    dis.innerHTML = `${obj.distance} <i>m/sec.</i>`;
+    dis.innerHTML = `${obj.distance} <i>m</i>`;
 }
 function updateMaxHeight() {
     let g = 9.8,
