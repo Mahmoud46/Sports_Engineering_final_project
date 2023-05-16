@@ -10,7 +10,7 @@ let inputsControls = document.querySelectorAll('.ins p'),
     stBtn = document.querySelector('.start'),
     resWindow = document.querySelector('.reset-window'),
     resBtn = document.querySelector('.res-btn');
-let obj = { v0: 20, alpha: 22, distance: 25, x: [], y: [], time: [] },
+let obj = { v0: 20, alpha: 22, distance: 25, x: [], y: [], time: [], h: 0 },
     maxHeight = 0, heightAtGoal = 0;
 let choicesRangesElements = [{
     att: 'dist-frm-gl',
@@ -179,6 +179,7 @@ function getHeightAtGoal() {
         t = obj.distance / (obj.v0 * Math.cos(alpha_rad)),
         h = parseFloat(obj.v0 * Math.sin(alpha_rad) * t - (0.5 * g * Math.pow(t, 2))).toFixed(1);
     h < 0 ? fnh.innerHTML = `-` : fnh.innerHTML = `${h} <i>m</i>`
+    obj.h = h;
 }
 
 function launchBall() {
@@ -188,6 +189,17 @@ function launchBall() {
         if (i < !1000 || (obj.distance - obj.x[i]) * 550 / 50 + 85 < -100) {
             ball.style.bottom = `0px`;
             clearInterval(interval);
+            ball.classList.remove("rotate");
+            ball.classList.add("stop");
+            setTimeout(_ => resWindow.classList.add('active'), 1000);
+        } else if ((obj.h < 2 && (obj.distance - obj.x[i]) * 550 / 50 + 85 < 0)) {
+            ball.style.bottom = `0px`;
+            ball.classList.remove("rotate");
+            ball.classList.add("stop");
+            setTimeout(_ => resWindow.classList.add('active'), 1000);
+        }
+        else if ((obj.h >= 2 && obj.h <= 2.2 && (obj.distance - obj.x[i]) <= 0)) {
+            ball.style.bottom = `0px`;
             ball.classList.remove("rotate");
             ball.classList.add("stop");
             setTimeout(_ => resWindow.classList.add('active'), 1000);
