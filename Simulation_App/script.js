@@ -198,7 +198,7 @@ function launchBall() {
             ball.classList.add("stop");
             setTimeout(_ => resWindow.classList.add('active'), 1000);
         }
-        else if ((obj.h >= 2 && obj.h <= 2.2 && (obj.distance - obj.x[i]) <= 0)) {
+        else if ((obj.h >= 1.9 && obj.h <= 2.3 && (obj.distance - obj.x[i]) <= 0)) {
             ball.style.bottom = `0px`;
             ball.classList.remove("rotate");
             ball.classList.add("stop");
